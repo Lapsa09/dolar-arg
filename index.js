@@ -1,32 +1,18 @@
 const dolarTuristaVenta = document.getElementById("tur-venta")
 const dolarblueCompra = document.getElementById("bl-compra")
 const dolarblueVenta = document.getElementById("bl-venta")
-const fecha=document.getElementById("fecha")
+const fecha = document.getElementById("fecha")
 
-var miUrl = "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
-
-fetch(miUrl)
+fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
     .then(res => res.json())
-    .then(data => {
-        var arr = []
-        for (let i in data) {
-            arr.push(data[i].casa)
-        }
-        return arr
-    })
+    .then(data => data.map(i => i.casa))
     .then(dolares => {
-        for(let i in dolares){
-            if(dolares[i].nombre==="Dolar Blue"){
-                dolarblueVenta.innerText="$ "+parseInt(dolares[i].venta)
-                dolarblueCompra.innerText="$ "+parseInt(dolares[i].compra)
-            }
-            if(dolares[i].nombre==="Dolar turista"){
-                dolarTuristaVenta.innerText="$ "+parseInt(dolares[i].venta)
-            }
-        }
+        var obj1 = dolares.find(i => i.nombre == "Dolar Blue")
+        var obj2 = dolares.find(i => i.nombre == "Dolar turista")
+
+        dolarblueCompra.innerText = "$ " + parseInt(obj1.compra)
+        dolarblueVenta.innerText = "$ " + parseInt(obj1.venta)
+        dolarTuristaVenta.innerText = "$ " + parseInt(obj2.venta)
     })
 
-var d=new Date()
-var dformat=[d.getDate(),d.getMonth()+1].join("/")+" "+[d.getHours(),d.getMinutes()].join(":")
-
-fecha.innerText=dformat
+fecha.innerText = moment().format('L LT');
