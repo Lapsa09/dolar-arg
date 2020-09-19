@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Monedas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <img src="img/money.png" class="money-img" alt="">
+    <h1>Cotizador del dolar</h1>
+    <p>Valor del dolar al dia de la fecha</p>
+
+    <div class="container">
+        <div class="currency">
+            <h2>Dolar Turista</h2>
+            <div class="valores-1">
+                <div class="valor">
+                    <h3>Venta</h3>
+                    <h4 class="dolar" id="tur-venta"></h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="currency">
+            <h2>Dolar Blue</h2>
+            <div class="valores-2">
+                <div class="valor">
+                    <h3>Compra</h3>
+                    <h4 class="dolar" id="bl-compra"></h4>
+                </div>
+                <div class="valor">
+                    <h3>Venta</h3>
+                    <h4 class="dolar" id="bl-venta"></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p>Actualizado al dia <span id="fecha"></span></p>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
